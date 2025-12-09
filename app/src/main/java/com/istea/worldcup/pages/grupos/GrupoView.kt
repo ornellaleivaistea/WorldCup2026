@@ -45,7 +45,8 @@ fun GruposView(
         ) {
             BackgroundImage()
             when (state) {
-                GruposState.Cargando -> Text("Cargando...")
+                /* Fix punto 1: GruposState.Cargando -> Text("Cargando...") */
+                GruposState.Cargando -> Cargando()
                 is GruposState.Resultado -> GroupsList(grupos = state.grupos){
                     onAction(OnGrupoClick(it))
                 }
@@ -82,7 +83,8 @@ fun GroupCardView(
     ) {
         Column(modifier = Modifier.padding(16.dp)) {
             Text(
-                text = "grupo.name",
+                /* Fix punto 3: text = "grupo.name" */
+                text = grupo.name,
                 style = MaterialTheme.typography.titleLarge,
                 modifier = Modifier.fillMaxWidth(),
                 textAlign = TextAlign.Center
@@ -105,7 +107,8 @@ fun GroupCardView(
 @Composable
 fun BackgroundImage() {
     Image(
-        painter = painterResource(R.drawable.logo_viejo),
+        /* Fix punto 2: painter = painterResource(R.drawable.logo_viejo) */
+        painter = painterResource(R.drawable.logo),
         contentDescription = null,
         contentScale = ContentScale.Crop,
         modifier = Modifier

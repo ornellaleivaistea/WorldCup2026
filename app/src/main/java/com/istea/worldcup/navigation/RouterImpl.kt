@@ -5,7 +5,8 @@ import androidx.navigation.NavController
 class RouterImpl(val navController: NavController): Router {
 
     override fun openGroupDetail(groupId: String) {
-        navController.navigate("detalle/J")
+        /* Fix punto 4: navController.navigate("detalle/J") */
+        navController.navigate("detalle/$groupId")
     }
 
     override fun back() {
